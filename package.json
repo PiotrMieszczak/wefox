@@ -1,0 +1,68 @@
+{
+  "name": "wefox-post-manager",
+  "version": "0.0.0",
+  "authors": [
+    "Piotr Mieszczak <mieszczak.piotr@gmail.com>"
+  ],
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "jest",
+    "lint": "ng lint --fix",
+    "prepare": "husky install",
+    "prettier:check": "prettier --config ../wefox/.prettierrc --write  --check .",
+    "postinstall": "ngcc --async",
+    "commit": "npx git-cz"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "lint-staged": {
+    "**/*.{ts,js}": "eslint --fix",
+    "**/*.{css,html}": "npm run prettier:check"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "~13.0.0",
+    "@angular/common": "~13.0.0",
+    "@angular/compiler": "~13.0.0",
+    "@angular/core": "~13.0.0",
+    "@angular/forms": "~13.0.0",
+    "@angular/platform-browser": "~13.0.0",
+    "@angular/platform-browser-dynamic": "~13.0.0",
+    "@angular/router": "~13.0.0",
+    "@datorama/akita": "^7.1.1",
+    "@datorama/akita-ngdevtools": "^7.0.0",
+    "rxjs": "~7.4.0",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.11.4"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "~13.0.4",
+    "@angular/cli": "~13.0.4",
+    "@angular/compiler-cli": "~13.0.0",
+    "@types/jasmine": "~3.10.0",
+    "@types/node": "^12.11.1",
+    "eslint": "^8.18.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "git-cz": "^4.9.0",
+    "husky": "^8.0.1",
+    "jasmine-core": "~3.10.0",
+    "jest": "^28.1.1",
+    "jest-preset-angular": "^12.1.0",
+    "karma": "~6.3.0",
+    "karma-chrome-launcher": "~3.1.0",
+    "karma-coverage": "~2.0.3",
+    "karma-jasmine": "~4.0.0",
+    "karma-jasmine-html-reporter": "~1.7.0",
+    "lint-staged": "^13.0.2",
+    "prettier": "^2.7.1",
+    "prettier-eslint": "^15.0.1",
+    "typescript": "~4.4.3"
+  }
+}
