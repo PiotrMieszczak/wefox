@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core';
 import { AkitaNgDevtools } from '@datorama/akita-ngdevtools';
+import { HttpClientModule } from '@angular/common/http';
 
 const APP_MODULES = [CoreModule];
 const UI_LIB_MODULES = [
@@ -23,6 +24,7 @@ const STORE_MODULES = [AkitaNgDevtools.forRoot()];
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     [...APP_MODULES],
     [...UI_LIB_MODULES],
     [...STORE_MODULES],
