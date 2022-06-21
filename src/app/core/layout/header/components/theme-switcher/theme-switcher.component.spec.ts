@@ -11,7 +11,8 @@ import { UiService } from '../../../../../store/ui/state/ui.service';
 
 @Component({
   template: '<div></div>',
-  selector: 'app-tui-toggle',
+  // eslint-disable-next-line @angular-eslint/component-selector
+  selector: 'tui-toggle',
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

@@ -1,13 +1,19 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ThemeType } from './core';
+import { routerAnimation, ThemeType } from './core';
 import { Data, RouterOutlet } from '@angular/router';
 import { UiQuery } from './store/ui/state/ui.query';
+import { transition, trigger, useAnimation } from '@angular/animations';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  animations: [
+    trigger('routerAnimation', [
+      transition('list <=> details', useAnimation(routerAnimation)),
+    ]),
+  ],
 })
 export class AppComponent {
   title = 'Posts manager';
