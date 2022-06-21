@@ -7,7 +7,14 @@ import { filter, map, Observable, take, tap } from 'rxjs';
 import { assertProperties } from '../../shared/utils/utils';
 import { TuiAlertService } from '@taiga-ui/core';
 
-export const POST_PROPS = ['id', 'title', 'lat', 'long', 'image_url'];
+export const POST_PROPS = [
+  'id',
+  'title',
+  'lat',
+  'long',
+  'image_url',
+  'content',
+];
 
 @Injectable({ providedIn: 'root' })
 export class PostsListService {
