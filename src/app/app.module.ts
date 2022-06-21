@@ -14,6 +14,7 @@ const UI_LIB_MODULES = [
   TuiRootModule,
   TuiDialogModule,
   TuiAlertModule,
+  TuiAlertModule,
   TuiDialogModule,
 ];
 const STORE_MODULES = [AkitaNgDevtools.forRoot()];
