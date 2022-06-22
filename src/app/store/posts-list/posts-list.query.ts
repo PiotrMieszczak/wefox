@@ -4,7 +4,7 @@ import { PostsListStore, PostsListState } from './posts-list.store';
 
 @Injectable({ providedIn: 'root' })
 export class PostsListQuery extends QueryEntity<PostsListState> {
-  constructor(protected store: PostsListStore) {
+  constructor(protected override store: PostsListStore) {
     super(store);
   }
 }

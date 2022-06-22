@@ -1,1 +1,11 @@
-<p>posts-table-searchbar works!</p>
+<form [formGroup]="form">
+  <div class="tui-form__row">
+    <tui-input
+      formControlName="quickSearch"
+      icon="tuiIconSearch"
+      [tuiTextfieldCleaner]="true">
+      Search by title or content
+      <input tuiTextfield />
+    </tui-input>
+  </div>
+</form>
