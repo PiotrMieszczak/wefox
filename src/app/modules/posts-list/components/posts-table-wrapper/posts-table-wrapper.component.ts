@@ -53,7 +53,7 @@ export class PostsTableWrapperComponent implements OnInit, OnDestroy {
         takeUntil(this.destroy$)
       )
       .subscribe(rows => {
-        this.posts = rows;
+        this.posts = [...rows];
       });
   }
 }

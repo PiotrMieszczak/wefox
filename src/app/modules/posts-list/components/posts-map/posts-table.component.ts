@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  OnInit,
+} from '@angular/core';
 import { Post } from '../../../../store';
 
 @Component({
@@ -10,19 +15,14 @@ import { Post } from '../../../../store';
 export class PostsMapComponent {
   @Input()
   data: Post[] = [];
-  dropdownOpen = false;
 
-  readonly columns = ['title', 'content', 'lat', 'long', 'actions'];
-
-  view(item: Post) {
-    //TODO
-  }
-
-  edit(item: Post) {
-    //TODO
-  }
-
-  remove(item: Post) {
-    //TODO
-  }
+  zoom = 2;
+  // @ts-ignore
+  // center: google.maps.LatLngLiteral;
+  options: google.maps.MapOptions = {
+    mapTypeId: 'hybrid',
+    zoomControl: true,
+    scrollwheel: true,
+    disableDoubleClickZoom: true,
+  };
 }

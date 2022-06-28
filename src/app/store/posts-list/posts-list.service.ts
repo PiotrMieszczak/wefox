@@ -34,6 +34,7 @@ export class PostsListService {
       map((posts: IPost[]) => this.store.add(posts.map(post => new Post(post))))
     );
   }
+
   getOne(postId: string): Observable<unknown> {
     return this._http.get(`/posts/${postId}`).pipe(
       filter(post => assertProperties(POST_PROPS, post)),
