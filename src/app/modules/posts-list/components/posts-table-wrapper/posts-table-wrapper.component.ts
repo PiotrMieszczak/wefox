@@ -13,7 +13,7 @@ import { Post, PostsListQuery, PostsListService } from '../../../../store';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PostsTableWrapperComponent implements OnInit, OnDestroy {
-  posts$: Observable<Post[]> = of([]);
+  posts: Post[] = [];
   private destroy$: Subject<void> = new Subject<void>();
 
   constructor(
@@ -53,8 +53,7 @@ export class PostsTableWrapperComponent implements OnInit, OnDestroy {
         takeUntil(this.destroy$)
       )
       .subscribe(rows => {
-        //TODO
-        console.log(rows);
+        this.posts = rows;
       });
   }
 }

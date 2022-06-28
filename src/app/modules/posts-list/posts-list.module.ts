@@ -5,11 +5,28 @@ import { PostsTableWrapperComponent } from './components/posts-table-wrapper/pos
 import { PostsTableSearchbarComponent } from './components/posts-table-searchbar/posts-table-searchbar.component';
 import { PostsListRoutingModule } from './posts-list-routing.module';
 import { TuiInputModule } from '@taiga-ui/kit';
-import { TuiTextfieldControllerModule } from '@taiga-ui/core';
+import {
+  TuiButtonModule,
+  TuiScrollbarModule,
+  TuiTextfieldControllerModule,
+} from '@taiga-ui/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TuiTableModule } from '@taiga-ui/addon-table';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
-const ANGULAR_MODULES = [CommonModule, ReactiveFormsModule, FormsModule];
-const UI_LIB_MODULES = [TuiInputModule, TuiTextfieldControllerModule];
+const ANGULAR_MODULES = [
+  CommonModule,
+  ReactiveFormsModule,
+  FormsModule,
+  ScrollingModule,
+];
+const UI_LIB_MODULES = [
+  TuiInputModule,
+  TuiTextfieldControllerModule,
+  TuiTableModule,
+  TuiScrollbarModule,
+  TuiButtonModule,
+];
 
 @NgModule({
   declarations: [
