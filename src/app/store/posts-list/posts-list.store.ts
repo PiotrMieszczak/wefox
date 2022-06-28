@@ -9,6 +9,7 @@ import { Post } from './posts-list.model';
 
 export interface PostsListState extends EntityState<Post>, ActiveState {
   query: string;
+  editedLocation: Post | null;
 }
 
 @Injectable({ providedIn: 'root' })
@@ -17,6 +18,7 @@ export class PostsListStore extends EntityStore<PostsListState> {
   constructor() {
     super({
       query: '',
+      editedLocation: null,
     });
   }
 }

@@ -4,7 +4,12 @@ import { PostsMapComponent } from './components/posts-map/posts-table.component'
 import { PostsTableWrapperComponent } from './components/posts-table-wrapper/posts-table-wrapper.component';
 import { PostsTableSearchbarComponent } from './components/posts-table-searchbar/posts-table-searchbar.component';
 import { PostsListRoutingModule } from './posts-list-routing.module';
-import { TuiInputModule } from '@taiga-ui/kit';
+import {
+  TuiFilesModule,
+  TuiInputFilesModule,
+  TuiInputModule,
+  TuiTextAreaModule,
+} from '@taiga-ui/kit';
 import {
   TuiButtonModule,
   TuiScrollbarModule,
@@ -14,6 +19,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TuiTableModule } from '@taiga-ui/addon-table';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { GoogleMapsModule } from '@angular/google-maps';
+import { PostsMarkerDialogComponent } from './components/posts-marker-dialog/posts-marker-dialog.component';
 
 const ANGULAR_MODULES = [
   CommonModule,
@@ -27,6 +33,9 @@ const UI_LIB_MODULES = [
   TuiTableModule,
   TuiScrollbarModule,
   TuiButtonModule,
+  TuiInputFilesModule,
+  TuiFilesModule,
+  TuiTextAreaModule,
 ];
 
 @NgModule({
@@ -34,6 +43,7 @@ const UI_LIB_MODULES = [
     PostsMapComponent,
     PostsTableWrapperComponent,
     PostsTableSearchbarComponent,
+    PostsMarkerDialogComponent,
   ],
   imports: [
     CommonModule,

@@ -1,4 +1,9 @@
-<google-map height="500px" width="100%" [zoom]="zoom" [options]="options">
+<google-map
+  height="600px"
+  width="100%"
+  [zoom]="zoom"
+  [options]="options"
+  (mapDblclick)="onClick($event)">
   <map-marker
     *ngFor="let item of data"
     [position]="item.marker.position"

@@ -35,10 +35,12 @@ export class PostsListService {
     );
   }
 
-  getOne(postId: string): Observable<unknown> {
+  getOne(postId: number): Observable<unknown> {
     return this._http.get(`/posts/${postId}`).pipe(
       filter(post => assertProperties(POST_PROPS, post)),
-      map((post: IPost) => this.store.update({ editedPost: new Post(post) }))
+      map((post: IPost) =>
+        this.store.update({ editedLocation: new Post(post) })
+      )
     );
   }
 

@@ -1,0 +1,77 @@
+<form [formGroup]="form">
+  <div class="tui-form__row">
+    <tui-input formControlName="title">
+      Title
+      <span class="tui-required"></span>
+      <input tuiTextfield />
+    </tui-input>
+  </div>
+
+  <div class="tui-form__row tui-form__row_multi-fields">
+    <div class="tui-form__row_half-width tui-space_right-2">
+      <tui-input formControlName="lat">
+        Latitude
+        <input tuiTextfield />
+      </tui-input>
+    </div>
+    <div class="tui-form__row_half-width">
+      <tui-input formControlName="lng">
+        Longitude
+        <input tuiTextfield />
+      </tui-input>
+    </div>
+  </div>
+
+  <div class="tui-form__row">
+    <tui-text-area formControlName="content" [expandable]="true">
+      Content
+      <span class="tui-required"></span>
+    </tui-text-area>
+  </div>
+  <div class="tui-form__row">
+    <ng-container>
+      <tui-input-files
+        formControlName="image"
+        accept="image/*"></tui-input-files>
+    </ng-container>
+
+    <tui-files>
+      <tui-file
+        *ngIf="form.controls['image'].value as file"
+        [file]="file"
+        (removed)="removeFile()"></tui-file>
+    </tui-files>
+  </div>
+
+  <div class="tui-form__buttons tui-form__buttons_align_end">
+    <button
+      tuiButton
+      type="button"
+      appearance="outline"
+      class="tui-space_right-3"
+      size="m"
+      (click)="dismiss()">
+      Cancel
+    </button>
+    <button
+      *ngIf="mode === 'Create'"
+      tuiButton
+      type="button"
+      size="m"
+      class="tui-space_right-3"
+      [disabled]="!form.invalid"
+      (click)="addData()">
+      Add
+    </button>
+    <button
+      *ngIf="mode === 'Edit'"
+      tuiButton
+      type="button"
+      size="m"
+      class="tui-space_right-3"
+      [disabled]="form.invalid"
+      (click)="saveData()">
+      Add
+    </button>
+  </div>
+</form>
