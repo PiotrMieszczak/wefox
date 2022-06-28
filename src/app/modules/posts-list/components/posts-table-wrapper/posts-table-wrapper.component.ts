@@ -15,6 +15,8 @@ import { Post, PostsListQuery, PostsListService } from '../../../../store';
 export class PostsTableWrapperComponent implements OnInit, OnDestroy {
   posts: Post[] = [];
   private destroy$: Subject<void> = new Subject<void>();
+  activeItemIndex = 0;
+  mapVisible = true;
 
   constructor(
     private readonly _postsQuery: PostsListQuery,
@@ -33,6 +35,10 @@ export class PostsTableWrapperComponent implements OnInit, OnDestroy {
 
   getAllPosts(): void {
     this._postListService.getAll().subscribe();
+  }
+
+  showMap(show: boolean) {
+    this.mapVisible = show;
   }
 
   private startSearchSubscribe(): void {

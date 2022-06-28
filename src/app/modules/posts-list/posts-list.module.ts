@@ -8,6 +8,7 @@ import {
   TuiFilesModule,
   TuiInputFilesModule,
   TuiInputModule,
+  TuiTabsModule,
   TuiTextAreaModule,
 } from '@taiga-ui/kit';
 import {
@@ -21,6 +22,7 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { PostsMarkerDialogComponent } from './components/posts-marker-dialog/posts-marker-dialog.component';
 import { PostsInfoWindowComponent } from './components/posts-info-window/posts-info-window.component';
+import { PostsTableComponent } from './components/posts-table/posts-table.component';
 
 const ANGULAR_MODULES = [
   CommonModule,
@@ -37,6 +39,7 @@ const UI_LIB_MODULES = [
   TuiInputFilesModule,
   TuiFilesModule,
   TuiTextAreaModule,
+  TuiTabsModule,
 ];
 
 @NgModule({
@@ -46,6 +49,7 @@ const UI_LIB_MODULES = [
     PostsTableSearchbarComponent,
     PostsMarkerDialogComponent,
     PostsInfoWindowComponent,
+    PostsTableComponent,
   ],
   imports: [
     CommonModule,
