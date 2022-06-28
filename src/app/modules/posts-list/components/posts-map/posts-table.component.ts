@@ -1,9 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  Input,
-  OnInit,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Post } from '../../../../store';
 
 @Component({
@@ -16,7 +11,7 @@ export class PostsMapComponent {
   @Input()
   data: Post[] = [];
 
-  zoom = 2;
+  zoom = 3;
   // @ts-ignore
   // center: google.maps.LatLngLiteral;
   options: google.maps.MapOptions = {
@@ -24,5 +19,6 @@ export class PostsMapComponent {
     zoomControl: true,
     scrollwheel: true,
     disableDoubleClickZoom: true,
+    center: { lat: 40.41678, lng: -3.70379 },
   };
 }

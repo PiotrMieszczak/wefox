@@ -9,7 +9,7 @@ import {
 import { PostsListModule } from '../../modules/posts-list/posts-list.module';
 import { SpectatorService } from '@ngneat/spectator';
 import { createServiceFactory } from '@ngneat/spectator/jest';
-import { Post } from './posts-list.model';
+import { Marker, Post } from './posts-list.model';
 
 const mockPostData: Post[] = [
   {
@@ -19,6 +19,7 @@ const mockPostData: Post[] = [
     title: 'Madrid',
     content: 'Madrid is the capital of Spain',
     image_url: '',
+    marker: new Marker('Madrid', -3.70379, 40.41678),
   },
   {
     lat: '-3.70379',
@@ -27,6 +28,7 @@ const mockPostData: Post[] = [
     title: 'Barcelona',
     content: 'Barcelona is not the capital of Spain',
     image_url: '',
+    marker: new Marker('Barcelona', -3.70379, 40.41678),
   },
 ];
 

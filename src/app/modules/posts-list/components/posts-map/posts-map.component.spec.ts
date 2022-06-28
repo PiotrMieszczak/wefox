@@ -1,6 +1,6 @@
 import { Spectator, createComponentFactory } from '@ngneat/spectator';
 
-import { PostsMapComponent } from './posts-map.component';
+import { PostsMapComponent } from './posts-table.component';
 
 describe('PostsTableComponent', () => {
   let spectator: Spectator<PostsMapComponent>;
