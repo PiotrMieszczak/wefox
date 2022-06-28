@@ -13,3 +13,10 @@ body {
 .container--padding {
   padding: var(--tui-padding-l);
 }
+
+.gm-style .gm-style-iw-d::-webkit-scrollbar-track,
+.gm-style .gm-style-iw-d::-webkit-scrollbar-track-piece,
+.gm-style .gm-style-iw-c,
+.gm-style .gm-style-iw-t::after {
+  background: var(--tui-base-01);
+}

@@ -12,7 +12,6 @@ import {
   FormBuilder,
   FormControl,
   FormGroup,
-  Validator,
   Validators,
 } from '@angular/forms';
 

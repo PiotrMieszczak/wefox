@@ -5,9 +5,14 @@
   [options]="options"
   (mapDblclick)="onClick($event)">
   <map-marker
+    #marker="mapMarker"
     *ngFor="let item of data"
     [position]="item.marker.position"
     [title]="item.marker.title"
-    [options]="item.marker.options">
+    [options]="item.marker.options"
+    (mapClick)="openInfoWindow(marker, item)">
   </map-marker>
+  <map-info-window [options]="infoWindowOptions">
+    <app-posts-info-window [data]="infoWindowItem"></app-posts-info-window>
+  </map-info-window>
 </google-map>

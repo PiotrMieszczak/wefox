@@ -4,12 +4,14 @@ import {
   Inject,
   Injector,
   Input,
+  ViewChild,
 } from '@angular/core';
 import { Post, PostsListService } from '../../../../store';
 import { TuiDialogService } from '@taiga-ui/core';
 import { filter, iif, switchMap, take } from 'rxjs';
 import { PolymorpheusComponent } from '@tinkoff/ng-polymorpheus';
 import { PostsMarkerDialogComponent } from '../posts-marker-dialog/posts-marker-dialog.component';
+import { MapInfoWindow, MapMarker } from '@angular/google-maps';
 
 @Component({
   selector: 'app-posts-map',
@@ -20,6 +22,9 @@ import { PostsMarkerDialogComponent } from '../posts-marker-dialog/posts-marker-
 export class PostsMapComponent {
   @Input()
   data: Post[] = [];
+  // @ts-ignore
+  @ViewChild(MapInfoWindow, { static: false }) infoWindow: MapInfoWindow;
+  infoWindowItem: Post | null = null;
 
   constructor(
     @Inject(TuiDialogService) private readonly _dialogService: TuiDialogService,
@@ -28,14 +33,15 @@ export class PostsMapComponent {
   ) {}
 
   zoom = 3;
-  // @ts-ignore
-  // center: google.maps.LatLngLiteral;
   options: google.maps.MapOptions = {
     mapTypeId: 'hybrid',
     zoomControl: true,
     scrollwheel: true,
     disableDoubleClickZoom: true,
     center: { lat: 40.41678, lng: -3.70379 },
+  };
+  infoWindowOptions: google.maps.InfoWindowOptions = {
+    maxWidth: 600,
   };
 
   onClick(e: google.maps.MapMouseEvent | google.maps.IconMouseEvent): void {
@@ -63,5 +69,10 @@ export class PostsMapComponent {
       .subscribe(() => {
         this._postsService.getAll();
       });
+  }
+
+  openInfoWindow(marker: MapMarker, item: Post) {
+    this.infoWindowItem = item;
+    this.infoWindow.open(marker);
   }
 }
