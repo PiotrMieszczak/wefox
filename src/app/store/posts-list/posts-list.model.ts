@@ -1,5 +1,3 @@
-import { toInt } from '@taiga-ui/cdk';
-
 export class Post {
   id: number;
   title: string;
@@ -29,6 +27,7 @@ export class Marker {
   position: google.maps.LatLngLiteral;
   title: string = '';
   options = { animation: google.maps.Animation.DROP };
+
   constructor(title: string, lat: number, lng: number) {
     this.title = title;
     this.position = { lat, lng };

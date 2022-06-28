@@ -11,12 +11,14 @@
     <div class="tui-form__row_half-width tui-space_right-2">
       <tui-input formControlName="lat">
         Latitude
+        <span class="tui-required"></span>
         <input tuiTextfield />
       </tui-input>
     </div>
     <div class="tui-form__row_half-width">
-      <tui-input formControlName="lng">
+      <tui-input formControlName="long">
         Longitude
+        <span class="tui-required"></span>
         <input tuiTextfield />
       </tui-input>
     </div>
@@ -28,19 +30,12 @@
       <span class="tui-required"></span>
     </tui-text-area>
   </div>
-  <div class="tui-form__row">
-    <ng-container>
-      <tui-input-files
-        formControlName="image"
-        accept="image/*"></tui-input-files>
-    </ng-container>
 
-    <tui-files>
-      <tui-file
-        *ngIf="form.controls['image'].value as file"
-        [file]="file"
-        (removed)="removeFile()"></tui-file>
-    </tui-files>
+  <div class="tui-form__row">
+    <tui-input formControlName="image_url">
+      Image url
+      <input tuiTextfield />
+    </tui-input>
   </div>
 
   <div class="tui-form__buttons tui-form__buttons_align_end">
@@ -59,7 +54,7 @@
       type="button"
       size="m"
       class="tui-space_right-3"
-      [disabled]="!form.invalid"
+      [disabled]="form.invalid"
       (click)="addData()">
       Add
     </button>

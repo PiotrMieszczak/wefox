@@ -5,9 +5,9 @@ import {
   Injector,
   Input,
 } from '@angular/core';
-import { Post } from '../../../../store';
+import { Post, PostsListService } from '../../../../store';
 import { TuiDialogService } from '@taiga-ui/core';
-import { filter, take } from 'rxjs';
+import { filter, iif, switchMap, take } from 'rxjs';
 import { PolymorpheusComponent } from '@tinkoff/ng-polymorpheus';
 import { PostsMarkerDialogComponent } from '../posts-marker-dialog/posts-marker-dialog.component';
 
@@ -23,7 +23,8 @@ export class PostsMapComponent {
 
   constructor(
     @Inject(TuiDialogService) private readonly _dialogService: TuiDialogService,
-    @Inject(Injector) private readonly _injector: Injector
+    @Inject(Injector) private readonly _injector: Injector,
+    private readonly _postsService: PostsListService
   ) {}
 
   zoom = 3;
@@ -50,9 +51,17 @@ export class PostsMapComponent {
           },
         }
       )
-      .pipe(take(1), filter(Boolean))
-      .subscribe(res => {
-        console.log(res);
+      .pipe(
+        switchMap((res: any) =>
+          iif(
+            () => res.type === 'create',
+            this._postsService.create(res.data),
+            this._postsService.update(res.data)
+          )
+        )
+      )
+      .subscribe(() => {
+        this._postsService.getAll();
       });
   }
 }

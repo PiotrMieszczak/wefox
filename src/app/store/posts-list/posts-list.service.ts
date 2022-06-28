@@ -44,7 +44,7 @@ export class PostsListService {
     );
   }
 
-  create(post: Pick<Post, 'title' | 'content'>): Observable<unknown> {
+  create(post: any): Observable<unknown> {
     return this._http
       .post(`/posts`, post)
       .pipe(tap(() => this.openAlert('Create')));

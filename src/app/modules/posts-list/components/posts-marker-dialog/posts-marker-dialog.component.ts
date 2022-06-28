@@ -40,7 +40,7 @@ export class PostsMarkerDialogComponent implements OnInit {
 
   constructor(
     @Inject(POLYMORPHEUS_CONTEXT)
-    private readonly _context: TuiDialogContext<boolean, IMarkerDialogData>,
+    private readonly _context: TuiDialogContext<any, IMarkerDialogData>,
     private readonly _postsService: PostsListService,
     private readonly _postsQuery: PostsListQuery,
     private readonly _fb: FormBuilder
@@ -70,8 +70,11 @@ export class PostsMarkerDialogComponent implements OnInit {
   }
 
   addData(): void {
-    // TO DO
-    // this._context.completeWith();
+    console.log('data', this.form.getRawValue());
+    this._context.completeWith({
+      type: 'create',
+      data: this.form.getRawValue(),
+    });
   }
 
   saveData(): void {
@@ -101,15 +104,15 @@ export class PostsMarkerDialogComponent implements OnInit {
       title: new FormControl('', Validators.required),
       content: new FormControl('', Validators.required),
       lat: new FormControl(''),
-      lng: new FormControl(''),
-      image: new FormControl(),
+      long: new FormControl(''),
+      image_url: new FormControl(),
     });
   }
 
-  private setPos(lat: number, lng: number) {
+  private setPos(lat: number, long: number) {
     this.form.patchValue({
       lat,
-      lng,
+      long,
     });
   }
 }
