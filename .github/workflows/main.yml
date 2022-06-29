@@ -1,9 +1,17 @@
 name: Build & publish project
 on:
   push:
-    branches: ["main" ]
+    branches:
+      - main
   pull_request:
-    branches: ["main" ]
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Version
+        default: v1.0.0
+        required: true
 
 jobs:
   build:
