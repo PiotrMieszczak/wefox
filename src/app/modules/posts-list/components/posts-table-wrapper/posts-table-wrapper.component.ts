@@ -71,9 +71,7 @@ export class PostsTableWrapperComponent implements OnInit, OnDestroy {
         takeUntil(this.destroy$)
       )
       .subscribe(rows => {
-        console.log('rows', rows);
         this.posts = [...rows];
-        console.log('posts', this.posts);
         this._cdr.markForCheck();
       });
   }
@@ -83,7 +81,6 @@ export class PostsTableWrapperComponent implements OnInit, OnDestroy {
       .select(store => store.refreshData)
       .pipe(filter(Boolean))
       .subscribe(() => {
-        console.log('refresh');
         this.getAllPosts();
       });
   }
