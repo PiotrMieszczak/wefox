@@ -1,9 +1,9 @@
 export class CustomError {
   message: string;
-  status?: number;
+  name?: string;
 
-  constructor(msg: string, status?: number) {
+  constructor(msg: string, name?: string) {
     this.message = msg;
-    this.status = status;
+    this.name = name;
   }
 }

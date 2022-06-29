@@ -9,7 +9,7 @@ import { Post, PostsListService } from '../../../../store';
 import { TuiDialogService } from '@taiga-ui/core';
 import { PolymorpheusComponent } from '@tinkoff/ng-polymorpheus';
 import { PostsMarkerDialogComponent } from '../posts-marker-dialog/posts-marker-dialog.component';
-import { filter, iif, switchMap, tap } from 'rxjs';
+import { filter, iif, switchMap, take, tap } from 'rxjs';
 
 @Component({
   selector: 'app-posts-table',
@@ -50,7 +50,12 @@ export class PostsTableComponent {
       .subscribe();
   }
 
-  remove(item: Post) {
-    //TODO
+  remove(item: Post): void {
+    this._postsService
+      .delete(item)
+      .pipe(take(1))
+      .subscribe(() => {
+        this._postsService.setRefreshState(true);
+      });
   }
 }

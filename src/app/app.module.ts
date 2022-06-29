@@ -5,9 +5,9 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CoreModule } from './core';
+import { CoreModule, CustomHttpInterceptor } from './core';
 import { AkitaNgDevtools } from '@datorama/akita-ngdevtools';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 const APP_MODULES = [CoreModule];
 const UI_LIB_MODULES = [
@@ -33,7 +33,13 @@ const STORE_MODULES = [AkitaNgDevtools.forRoot()];
     TuiDialogModule,
     TuiAlertModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: CustomHttpInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
