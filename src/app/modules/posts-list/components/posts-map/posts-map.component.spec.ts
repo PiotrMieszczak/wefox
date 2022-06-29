@@ -74,7 +74,7 @@ describe('PostsMapComponent', () => {
     const serviceSpy = jest.spyOn(postService, 'update');
     const mouseEvent = createMouseEvent('click');
 
-    spectator.component.onClick(mouseEvent as SafeAny);
+    spectator.component.addMarker(mouseEvent as SafeAny);
     spectator.detectChanges();
 
     expect(serviceSpy).toHaveBeenCalledTimes(1);

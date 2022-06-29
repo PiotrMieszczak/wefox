@@ -3,7 +3,7 @@
   width="100%"
   [zoom]="zoom"
   [options]="options"
-  (mapDblclick)="onClick($event)">
+  (mapDblclick)="addMarker($event)">
   <map-marker
     #marker="mapMarker"
     *ngFor="let item of data"

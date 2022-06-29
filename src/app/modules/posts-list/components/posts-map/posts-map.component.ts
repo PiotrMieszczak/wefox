@@ -44,7 +44,7 @@ export class PostsMapComponent {
     maxWidth: 600,
   };
 
-  onClick(e: google.maps.MapMouseEvent | google.maps.IconMouseEvent): void {
+  addMarker(e: google.maps.MapMouseEvent | google.maps.IconMouseEvent): void {
     this._dialogService
       .open(
         new PolymorpheusComponent(PostsMarkerDialogComponent, this._injector),

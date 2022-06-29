@@ -1,0 +1,26 @@
+<div class="tui-row">
+  <div class="tui-col_xs-12 tui-col_lg-12 tui-col_md-12">
+    <p>{{ message }}</p>
+  </div>
+</div>
+<div class="tui-row" style="text-align: right">
+  <div class="tui-col_xs-12 tui-col_lg-12 tui-col_md-12">
+    <button
+      tuiButton
+      type="button"
+      appearance="outline"
+      class="tui-space_right-3"
+      size="m"
+      (click)="dismiss()">
+      Cancel
+    </button>
+    <button
+      tuiButton
+      type="button"
+      size="m"
+      class="tui-space_right-3"
+      (click)="makeAction()">
+      Yes
+    </button>
+  </div>
+</div>

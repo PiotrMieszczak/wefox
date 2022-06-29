@@ -31,7 +31,15 @@ export class PostsListService {
           assertProperties(POST_PROPS, post)
         )
       ),
-      map((posts: IPost[]) => this.store.add(posts.map(post => new Post(post))))
+      map((posts: IPost[]) =>
+        this.store.set(posts.map(post => new Post(post)))
+      ),
+      tap(() =>
+        this.store.update({
+          query: '',
+          refreshData: false,
+        })
+      )
     );
   }
 

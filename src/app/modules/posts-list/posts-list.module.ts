@@ -24,6 +24,7 @@ import { GoogleMapsModule } from '@angular/google-maps';
 import { PostsMarkerDialogComponent } from './components/posts-marker-dialog/posts-marker-dialog.component';
 import { PostsInfoWindowComponent } from './components/posts-info-window/posts-info-window.component';
 import { PostsTableComponent } from './components/posts-table/posts-table.component';
+import { SharedModuleModule } from '../../shared/shared.module';
 
 const ANGULAR_MODULES = [
   CommonModule,
@@ -59,6 +60,7 @@ const UI_LIB_MODULES = [
     GoogleMapsModule,
     ...ANGULAR_MODULES,
     ...UI_LIB_MODULES,
+    SharedModuleModule,
   ],
 })
 export class PostsListModule {}

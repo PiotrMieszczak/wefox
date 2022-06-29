@@ -1,5 +1,6 @@
 import {
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   OnDestroy,
   OnInit,
@@ -29,7 +30,8 @@ export class PostsTableWrapperComponent implements OnInit, OnDestroy {
 
   constructor(
     private readonly _postsQuery: PostsListQuery,
-    private readonly _postListService: PostsListService
+    private readonly _postListService: PostsListService,
+    private readonly _cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
@@ -44,7 +46,7 @@ export class PostsTableWrapperComponent implements OnInit, OnDestroy {
   }
 
   getAllPosts(): void {
-    this._postListService.getAll().pipe(take(1)).subscribe();
+    this._postListService.getAll().subscribe();
   }
 
   showMap(show: boolean) {
@@ -69,7 +71,10 @@ export class PostsTableWrapperComponent implements OnInit, OnDestroy {
         takeUntil(this.destroy$)
       )
       .subscribe(rows => {
+        console.log('rows', rows);
         this.posts = [...rows];
+        console.log('posts', this.posts);
+        this._cdr.markForCheck();
       });
   }
 
@@ -78,8 +83,8 @@ export class PostsTableWrapperComponent implements OnInit, OnDestroy {
       .select(store => store.refreshData)
       .pipe(filter(Boolean))
       .subscribe(() => {
+        console.log('refresh');
         this.getAllPosts();
-        this._postListService.setQuery('');
       });
   }
 }

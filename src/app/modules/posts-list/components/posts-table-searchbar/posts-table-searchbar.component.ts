@@ -59,6 +59,7 @@ export class PostsTableSearchbarComponent implements OnDestroy {
       .pipe(filter(Boolean))
       .subscribe(() => {
         this.form.reset();
+        this.form.setValue({ quickSearch: '' });
         this._cdr.markForCheck();
       });
   }

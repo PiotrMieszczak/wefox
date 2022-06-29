@@ -9,7 +9,6 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { DIALOG_MODE, Post, PostsListService } from '../../../../store';
 import { TuiDialogService } from '@taiga-ui/core';
 import { of } from 'rxjs';
-import { SafeAny } from '../../../../core';
 import { TuiTableModule } from '@taiga-ui/addon-table';
 const MOCK_DATA_EDIT = {
   type: DIALOG_MODE.EDIT,
@@ -53,6 +52,16 @@ describe('PostsTableComponent', () => {
     const serviceSpy = jest.spyOn(postService, 'update');
 
     spectator.component.edit(MOCK_DATA_EDIT.data as Post);
+    spectator.detectChanges();
+
+    expect(serviceSpy).toHaveBeenCalledTimes(1);
+    expect(serviceSpy).toHaveBeenCalledWith(MOCK_DATA_EDIT.data);
+  });
+
+  it('should invoke create method', () => {
+    const serviceSpy = jest.spyOn(postService, 'create');
+
+    spectator.component.add();
     spectator.detectChanges();
 
     expect(serviceSpy).toHaveBeenCalledTimes(1);
