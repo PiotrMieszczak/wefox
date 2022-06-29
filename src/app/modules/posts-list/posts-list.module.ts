@@ -13,6 +13,7 @@ import {
 } from '@taiga-ui/kit';
 import {
   TuiButtonModule,
+  TuiNotificationModule,
   TuiScrollbarModule,
   TuiSvgModule,
   TuiTextfieldControllerModule,
@@ -43,6 +44,7 @@ const UI_LIB_MODULES = [
   TuiTextAreaModule,
   TuiTabsModule,
   TuiSvgModule,
+  TuiNotificationModule,
 ];
 
 @NgModule({

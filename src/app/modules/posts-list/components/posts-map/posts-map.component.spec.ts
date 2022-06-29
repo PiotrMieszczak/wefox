@@ -8,7 +8,7 @@ import { PostsMapComponent } from './posts-map.component';
 import { MockComponent, MockDirective } from 'ng-mocks';
 import { PostsInfoWindowComponent } from '../posts-info-window/posts-info-window.component';
 import { DIALOG_MODE, PostsListService } from '../../../../store';
-import { TuiDialogService } from '@taiga-ui/core';
+import { TuiDialogService, TuiNotificationModule } from '@taiga-ui/core';
 import { of } from 'rxjs';
 import { SafeAny } from '../../../../core';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
@@ -50,7 +50,7 @@ describe('PostsMapComponent', () => {
       MockDirective(MapInfoWindow),
       MockComponent(PostsInfoWindowComponent),
     ],
-    imports: [HttpClientTestingModule],
+    imports: [HttpClientTestingModule, TuiNotificationModule],
     providers: [
       PostsListService,
       {
