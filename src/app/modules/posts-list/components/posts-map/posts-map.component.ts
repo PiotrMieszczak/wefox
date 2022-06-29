@@ -6,9 +6,9 @@ import {
   Input,
   ViewChild,
 } from '@angular/core';
-import { Post, PostsListService } from '../../../../store';
+import { DIALOG_MODE, Post, PostsListService } from '../../../../store';
 import { TuiDialogService } from '@taiga-ui/core';
-import { filter, iif, switchMap, take } from 'rxjs';
+import { filter, iif, switchMap, take, tap } from 'rxjs';
 import { PolymorpheusComponent } from '@tinkoff/ng-polymorpheus';
 import { PostsMarkerDialogComponent } from '../posts-marker-dialog/posts-marker-dialog.component';
 import { MapInfoWindow, MapMarker } from '@angular/google-maps';
@@ -60,15 +60,14 @@ export class PostsMapComponent {
       .pipe(
         switchMap((res: any) =>
           iif(
-            () => res.type === 'create',
+            () => res.type === DIALOG_MODE.CREATE,
             this._postsService.create(res.data),
             this._postsService.update(res.data)
           )
-        )
+        ),
+        tap(() => this._postsService.setRefreshState(true))
       )
-      .subscribe(() => {
-        this._postsService.getAll();
-      });
+      .subscribe();
   }
 
   openInfoWindow(marker: MapMarker, item: Post) {

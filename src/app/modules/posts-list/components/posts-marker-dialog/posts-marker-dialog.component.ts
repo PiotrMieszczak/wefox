@@ -6,7 +6,13 @@ import {
 } from '@angular/core';
 import { POLYMORPHEUS_CONTEXT } from '@tinkoff/ng-polymorpheus';
 import { TuiDialogContext } from '@taiga-ui/core';
-import { Post, PostsListQuery, PostsListService } from '../../../../store';
+import {
+  DIALOG_MODE,
+  IMarkerDialogData,
+  Post,
+  PostsListQuery,
+  PostsListService,
+} from '../../../../store';
 import { filter } from 'rxjs';
 import {
   FormBuilder,
@@ -15,16 +21,6 @@ import {
   Validators,
 } from '@angular/forms';
 
-interface IMarkerDialogData {
-  lat: number;
-  lng: number;
-  id: number;
-}
-
-const enum DialogMode {
-  CREATE = 'Create',
-  EDIT = 'Edit',
-}
 @Component({
   selector: 'app-posts-marker-dialog',
   templateUrl: './posts-marker-dialog.component.html',
@@ -35,7 +31,7 @@ export class PostsMarkerDialogComponent implements OnInit {
   data: IMarkerDialogData | undefined = undefined;
   editedPosition: Post | null = null;
   form: FormGroup;
-  mode: DialogMode = DialogMode.CREATE;
+  mode: DIALOG_MODE = DIALOG_MODE.CREATE;
 
   constructor(
     @Inject(POLYMORPHEUS_CONTEXT)
@@ -56,7 +52,8 @@ export class PostsMarkerDialogComponent implements OnInit {
     if (!!this.data.id) {
       this.getPositionDetail(this.data.id);
       this.getEditionPosition();
-      this.mode = DialogMode.EDIT;
+      this.mode = DIALOG_MODE.EDIT;
+      return;
     }
 
     if (!!this.data.lat && this.data.lng) {
@@ -68,17 +65,14 @@ export class PostsMarkerDialogComponent implements OnInit {
     this._context.completeWith(false);
   }
 
-  addData(): void {
-    console.log('data', this.form.getRawValue());
+  saveData(type: string): void {
     this._context.completeWith({
-      type: 'create',
-      data: this.form.getRawValue(),
+      type,
+      data:
+        this.data && this.data.id
+          ? { ...this.form.getRawValue(), id: this.data?.id }
+          : this.form.getRawValue(),
     });
-  }
-
-  saveData(): void {
-    // TO DO
-    // this._context.completeWith();
   }
 
   removeFile(): void {
@@ -86,15 +80,15 @@ export class PostsMarkerDialogComponent implements OnInit {
   }
 
   private getPositionDetail(id: number) {
-    this._postsService.getOne(id);
+    this._postsService.getOne(id).subscribe();
   }
 
   private getEditionPosition() {
     this._postsQuery
       .select(store => store.editedLocation)
       .pipe(filter(Boolean))
-      .subscribe(() => {
-        //TODO update form
+      .subscribe((res: Post) => {
+        this.setFormValue(res);
       });
   }
 
@@ -112,6 +106,16 @@ export class PostsMarkerDialogComponent implements OnInit {
     this.form.patchValue({
       lat,
       long,
+    });
+  }
+
+  private setFormValue(post: Post): void {
+    this.form.setValue({
+      title: post.title,
+      content: post.content,
+      lat: post.lat,
+      long: post.long,
+      image_url: post.image_url,
     });
   }
 }

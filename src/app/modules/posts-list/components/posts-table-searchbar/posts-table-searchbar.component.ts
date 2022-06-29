@@ -1,7 +1,12 @@
-import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
-import { debounceTime, startWith, Subject, takeUntil } from 'rxjs';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  OnDestroy,
+} from '@angular/core';
+import { debounceTime, filter, startWith, Subject, takeUntil } from 'rxjs';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { PostsListService } from '../../../../store';
+import { PostsListQuery, PostsListService } from '../../../../store';
 
 const DELAY_TIME = 300;
 
@@ -17,7 +22,9 @@ export class PostsTableSearchbarComponent implements OnDestroy {
 
   constructor(
     private readonly _fb: FormBuilder,
-    private readonly _postsService: PostsListService
+    private readonly _postsService: PostsListService,
+    private readonly _postsQuery: PostsListQuery,
+    private readonly _cdr: ChangeDetectorRef
   ) {
     this.form = this.buildForm();
     this.startSearchSubscribe();
@@ -26,6 +33,7 @@ export class PostsTableSearchbarComponent implements OnDestroy {
   ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.unsubscribe();
+    this.refreshDataSub();
   }
 
   private startSearchSubscribe(): void {
@@ -43,5 +51,15 @@ export class PostsTableSearchbarComponent implements OnDestroy {
     return this._fb.group({
       quickSearch: new FormControl(''),
     });
+  }
+
+  private refreshDataSub(): void {
+    this._postsQuery
+      .select(store => store.refreshData)
+      .pipe(filter(Boolean))
+      .subscribe(() => {
+        this.form.reset();
+        this._cdr.markForCheck();
+      });
   }
 }

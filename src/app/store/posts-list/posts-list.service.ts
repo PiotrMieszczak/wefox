@@ -65,8 +65,13 @@ export class PostsListService {
   setQuery(query: string): void {
     this.store.update({ query });
   }
+
   setActive(user: Post): void {
     this.store.setActive(user.id);
+  }
+
+  setRefreshState(state: boolean): void {
+    this.store.update({ refreshData: state });
   }
 
   private openAlert(actionType: string): void {

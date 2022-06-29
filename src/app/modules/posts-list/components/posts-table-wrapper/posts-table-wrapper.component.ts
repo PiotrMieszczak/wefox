@@ -4,7 +4,16 @@ import {
   OnDestroy,
   OnInit,
 } from '@angular/core';
-import { map, Observable, of, Subject, switchMap, takeUntil } from 'rxjs';
+import {
+  filter,
+  map,
+  Observable,
+  of,
+  Subject,
+  switchMap,
+  take,
+  takeUntil,
+} from 'rxjs';
 import { Post, PostsListQuery, PostsListService } from '../../../../store';
 
 @Component({
@@ -26,6 +35,7 @@ export class PostsTableWrapperComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.getAllPosts();
     this.startSearchSubscribe();
+    this.refreshDataSub();
   }
 
   ngOnDestroy(): void {
@@ -34,7 +44,7 @@ export class PostsTableWrapperComponent implements OnInit, OnDestroy {
   }
 
   getAllPosts(): void {
-    this._postListService.getAll().subscribe();
+    this._postListService.getAll().pipe(take(1)).subscribe();
   }
 
   showMap(show: boolean) {
@@ -60,6 +70,16 @@ export class PostsTableWrapperComponent implements OnInit, OnDestroy {
       )
       .subscribe(rows => {
         this.posts = [...rows];
+      });
+  }
+
+  private refreshDataSub(): void {
+    this._postsQuery
+      .select(store => store.refreshData)
+      .pipe(filter(Boolean))
+      .subscribe(() => {
+        this.getAllPosts();
+        this._postListService.setQuery('');
       });
   }
 }

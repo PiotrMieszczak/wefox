@@ -10,6 +10,7 @@ import { Post } from './posts-list.model';
 export interface PostsListState extends EntityState<Post>, ActiveState {
   query: string;
   editedLocation: Post | null;
+  refreshData: boolean;
 }
 
 @Injectable({ providedIn: 'root' })
@@ -19,6 +20,7 @@ export class PostsListStore extends EntityStore<PostsListState> {
     super({
       query: '',
       editedLocation: null,
+      refreshData: false,
     });
   }
 }

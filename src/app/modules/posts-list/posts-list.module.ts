@@ -14,6 +14,7 @@ import {
 import {
   TuiButtonModule,
   TuiScrollbarModule,
+  TuiSvgModule,
   TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -40,6 +41,7 @@ const UI_LIB_MODULES = [
   TuiFilesModule,
   TuiTextAreaModule,
   TuiTabsModule,
+  TuiSvgModule,
 ];
 
 @NgModule({

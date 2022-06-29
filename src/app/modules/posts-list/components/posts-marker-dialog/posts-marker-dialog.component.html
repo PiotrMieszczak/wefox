@@ -55,7 +55,7 @@
       size="m"
       class="tui-space_right-3"
       [disabled]="form.invalid"
-      (click)="addData()">
+      (click)="saveData('Create')">
       Add
     </button>
     <button
@@ -65,8 +65,8 @@
       size="m"
       class="tui-space_right-3"
       [disabled]="form.invalid"
-      (click)="saveData()">
-      Add
+      (click)="saveData('Edit')">
+      Save
     </button>
   </div>
 </form>

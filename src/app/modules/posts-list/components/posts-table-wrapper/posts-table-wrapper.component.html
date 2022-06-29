@@ -8,8 +8,20 @@
         </div>
         <div class="tui-col_xs-6 tui-col_lg-6 tui-col_md-6">
           <tui-tabs [(activeItemIndex)]="activeItemIndex">
-            <button tuiTab (click)="showMap(true)">Map</button>
-            <button tuiTab (click)="showMap(false)">Table</button>
+            <button tuiTab (click)="showMap(true)">
+              <img
+                src="assets/image/map-pin.svg"
+                class="tui-space_right-2"
+                style="width: 24px; height: 24px" />
+              Map
+            </button>
+            <button tuiTab (click)="showMap(false)">
+              <img
+                src="assets/image/table.svg"
+                class="tui-space_right-2"
+                style="width: 24px; height: 24px" />
+              Table
+            </button>
           </tui-tabs>
         </div>
       </div>

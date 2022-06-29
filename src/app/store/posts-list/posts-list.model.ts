@@ -41,3 +41,14 @@ export interface IPost {
   content: string;
   image_url: string;
 }
+
+export const enum DIALOG_MODE {
+  CREATE = 'Create',
+  EDIT = 'Edit',
+}
+
+export interface IMarkerDialogData {
+  lat: number;
+  lng: number;
+  id: number;
+}
