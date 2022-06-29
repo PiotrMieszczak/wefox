@@ -20,6 +20,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { SafeAny } from '../../../../core';
 
 @Component({
   selector: 'app-posts-marker-dialog',
@@ -35,7 +36,7 @@ export class PostsMarkerDialogComponent implements OnInit {
 
   constructor(
     @Inject(POLYMORPHEUS_CONTEXT)
-    private readonly _context: TuiDialogContext<any, IMarkerDialogData>,
+    private readonly _context: TuiDialogContext<SafeAny, IMarkerDialogData>,
     private readonly _postsService: PostsListService,
     private readonly _postsQuery: PostsListQuery,
     private readonly _fb: FormBuilder

@@ -10,6 +10,7 @@ import { PostsListModule } from '../../modules/posts-list/posts-list.module';
 import { SpectatorService } from '@ngneat/spectator';
 import { createServiceFactory } from '@ngneat/spectator/jest';
 import { Marker, Post } from './posts-list.model';
+import { GoogleMapsModule } from '@angular/google-maps';
 
 const mockPostData: Post[] = [
   {
@@ -19,7 +20,7 @@ const mockPostData: Post[] = [
     title: 'Madrid',
     content: 'Madrid is the capital of Spain',
     image_url: '',
-    marker: new Marker('Madrid', -3.70379, 40.41678),
+    marker: {} as Marker,
   },
   {
     lat: '-3.70379',
@@ -28,7 +29,7 @@ const mockPostData: Post[] = [
     title: 'Barcelona',
     content: 'Barcelona is not the capital of Spain',
     image_url: '',
-    marker: new Marker('Barcelona', -3.70379, 40.41678),
+    marker: {} as Marker,
   },
 ];
 
@@ -41,7 +42,7 @@ describe('GetData', () => {
   const createService = createServiceFactory({
     service: PostsListService,
     providers: [PostsListStore],
-    imports: [PostsListModule, HttpClientTestingModule],
+    imports: [PostsListModule, HttpClientTestingModule, GoogleMapsModule],
   });
 
   beforeEach(() => {
@@ -72,7 +73,7 @@ describe('GetData', () => {
     it('should get post by id', function () {
       const url = environment.apiUrl + '/posts/1';
 
-      spectator.service.getOne('1').subscribe(res => {
+      spectator.service.getOne(1).subscribe(res => {
         expect(res).toEqual(mockPostData);
       });
 

@@ -13,7 +13,8 @@
     "lint": "ng lint --fix",
     "prepare": "husky install",
     "prettier:check": "prettier --config ../wefox/.prettierrc --write  --check .",
-    "commit": "npx git-cz"
+    "commit": "npx git-cz",
+    "postinstall": "ngcc --async"
   },
   "config": {
     "commitizen": {
