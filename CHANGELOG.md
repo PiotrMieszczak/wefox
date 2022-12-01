@@ -2,19 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-## [3.0.0](https://github.com/PiotrMieszczak/wefox/compare/v2.0.0...v3.0.0) (2022-12-01)
+### [3.0.1](https://github.com/PiotrMieszczak/wefox/compare/v3.0.0...v3.0.1) (2022-12-01)
 
+
+### Bug Fixes
+
+* 🐛 map rendering ([da0f23f](https://github.com/PiotrMieszczak/wefox/commit/da0f23f3a0dfc2dd7d53cbd5d8bfa2b80090a56f))
+
+## [3.0.0](https://github.com/PiotrMieszczak/wefox/compare/v2.0.0...v3.0.0) (2022-12-01)
 
 ### ⚠ BREAKING CHANGES
 
-* 🧨 i broke everything
+- 🧨 i broke everything
 
 ### Features
 
-* 🎸 new map feature ([773e467](https://github.com/PiotrMieszczak/wefox/commit/773e4675f855977d9fabfe1ae6c2079cd28a5a1c))
+- 🎸 new map feature ([773e467](https://github.com/PiotrMieszczak/wefox/commit/773e4675f855977d9fabfe1ae6c2079cd28a5a1c))
 
-
-* 🤖 add changelog ([d3142e4](https://github.com/PiotrMieszczak/wefox/commit/d3142e4c7beffb4b721e9342c5f20ff39ab94e0e))
+- 🤖 add changelog ([d3142e4](https://github.com/PiotrMieszczak/wefox/commit/d3142e4c7beffb4b721e9342c5f20ff39ab94e0e))
 
 ## 2.0.0 (2022-12-01)
 
