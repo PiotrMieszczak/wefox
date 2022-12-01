@@ -29,19 +29,16 @@ jobs:
           cache: 'npm'
       - run: npm ci && npm run build --if-present && npm run test
 
- changelog:
+  changelog:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v3
-
       - name: conventional Changelog Action
         id: changelog
         uses: TriPSs/conventional-changelog-action@v3
         with:
           github-token: ${{ secrets.CHANGELOG_RELEASE }}
-          version-file: "./package.json,./package-lock.json"
-
+          version-file: './package.json,./package-lock.json'
       - name: create release
         uses: actions/create-release@v1
         if: ${{ steps.changelog.outputs.skipped == 'false' }}
