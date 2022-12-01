@@ -4,10 +4,9 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### [3.0.1](https://github.com/PiotrMieszczak/wefox/compare/v3.0.0...v3.0.1) (2022-12-01)
 
-
 ### Bug Fixes
 
-* 🐛 map rendering ([da0f23f](https://github.com/PiotrMieszczak/wefox/commit/da0f23f3a0dfc2dd7d53cbd5d8bfa2b80090a56f))
+- 🐛 map rendering ([da0f23f](https://github.com/PiotrMieszczak/wefox/commit/da0f23f3a0dfc2dd7d53cbd5d8bfa2b80090a56f))
 
 ## [3.0.0](https://github.com/PiotrMieszczak/wefox/compare/v2.0.0...v3.0.0) (2022-12-01)
 
