@@ -13,13 +13,13 @@
 
 ### Built With
 
-* [Angular](https://angular.io/)
-* [Taiga UI](https://material.angular.io/)
-* [Spectator](https://ngneat.github.io/spectator/)
-* [Akita](https://datorama.github.io/akita/)
-* [Jest](https://jestjs.io/)
-* [GitHub Actions](https://github.com/features/actions)
-* [Docker](https://www.docker.com/)
+- [Angular](https://angular.io/)
+- [Taiga UI](https://material.angular.io/)
+- [Spectator](https://ngneat.github.io/spectator/)
+- [Akita](https://datorama.github.io/akita/)
+- [Jest](https://jestjs.io/)
+- [GitHub Actions](https://github.com/features/actions)
+- [Docker](https://www.docker.com/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -32,14 +32,14 @@
    ```sh
    npm install
    ```
-3. Run docker image from https://hub.docker.com/r/wefoxgroup/wg-web-challenge 
-3. Run start
+3. Run docker image from https://hub.docker.com/r/wefoxgroup/wg-web-challenge
+4. Run start
    ```sh
    npm run start
    ```
+
 ## Roadmap
 
 - [ ] Add jest coverage report to GitHub Actions
 - [ ] Improve unit tests
 - [ ] Add e2e tests
-
